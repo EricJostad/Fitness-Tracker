@@ -1,0 +1,24 @@
+{
+  "name": "fitness-tracker",
+  "version": "1.0.0",
+  "description": "A fitness tracking application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricJostad/Fitness-Tracker.git"
+  },
+  "author": "Eric Jostad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EricJostad/Fitness-Tracker/issues"
+  },
+  "homepage": "https://github.com/EricJostad/Fitness-Tracker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.19",
+    "morgan": "^1.10.0"
+  }
+}
