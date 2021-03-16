@@ -1,4 +1,4 @@
-// This creates the express server
+// Setting up required dependencies for server creation
 const express = require('express');
 const mongoose = require('mongoose');
 
