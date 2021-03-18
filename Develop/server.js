@@ -2,6 +2,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Fitness = require('../Develop/models/fitness');
+const apiRoutes = require('../Develop/routes/apiRoutes');
+const htmlRoutes = require('../Develop/routes/htmlRoutes');
 
 const PORT = process.env.PORT || 1170;
 const app = express();
