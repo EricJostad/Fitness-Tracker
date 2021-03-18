@@ -1,7 +1,7 @@
 // Setting up required dependencies 
 const express = require("express");
-const router = require("express").Router();
-const Fitness = require("../models/fitness");
+// const router = require("express").Router();
+const Workout = require("../models/fitness");
 
 module.exports = (app) => {
     app.post("/api/workouts", ({ body }, res) => {

@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 // Creating schema variable and defining it to use mongoose
 const Schema = mongoose.Schema;
 
-// Creating new schema/model, fitnessSchema
-const fitnessSchema = new Schema({
+// Creating new schema/model, WorkoutSchema
+const WorkoutSchema = new Schema({
     day: {
         type: Date,
         default: Date.now
@@ -38,14 +38,14 @@ const fitnessSchema = new Schema({
 });
 
 // This is a function that returns the total, combined duration of excercise over the last seven days
-fitnessSchema.virtual("totalDuration").get(function () {
+WorkoutSchema.virtual("totalDuration").get(function () {
     return this.exercises.reduce((total, exercise) => {
         return total + exercise.duration;
     }, 0);
 });
 
 // A variable that defines Fitness to the created fitnessSchema model
-const Fitness = mongoose.model("Workout", fitnessSchema);
+const workout = mongoose.model("Workout", WorkSchema);
 
 // Exports the Fitness schema/constructor 
-module.exports = Fitness;
+module.exports = Workout;
