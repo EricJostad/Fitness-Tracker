@@ -9,7 +9,6 @@
 - [Known Bugs](#known-bugs)
 - [Next Steps](#next-steps)
 - [Authors](#authors)
-- [Acknowledgements](#acknowledgements)
 
 ### Description of Project
 This is an overall Fitness tracker that allows the users to enter in new excercises or add to an existing workout base.
@@ -22,7 +21,6 @@ over time.
 - [HTML](https://html.com/)
 - [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
 - [Javascript](https://www.javascript.com/)
-- [JQuery](https://jquery.com/)
 - [Node](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
 
