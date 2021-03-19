@@ -1,34 +1,40 @@
 // Setting up required dependencies 
 const express = require("express");
-// const router = require("express").Router();
+const router = require("express").Router();
 const Workout = require("../models/fitness");
 
-module.exports = (app) => {
-    app.post("/api/workouts", ({ body }, res) => {
-        Workout.create({ day: new Date() })
-            .then((data) => res.json(data))
-    });
+router.post("/api/workouts", ({ body }, res) => {
+    Workout.create({ day: new Date() })
+        .then((data) => res.json(data))
+});
 
-    app.get("/api/workouts", (req, res) => {
-        Workout.find({}, (error, data) => {
-            if (error) {
-                res.send(error);
-            } else {
-                console.log(data)
-                res.json(data);
-            }
-        });
-    })
+router.get("/api/workouts", (req, res) => {
+    try {
+        const workout = await Workout.aggregate([
+            { $addFields: { totalDuration: { $sum: "$exercises.duration" } } }
+        ]);
+        res.json(workout);
+    } catch (err) {
+        res.json(err);
+    }
+})
 
-    app.get("/api/workouts/range", (req, res) => {
-        Workout.find().limit(7)
-            .then(workout => res.json(workout))
-            console.log(req.body)
-    })
+router.get("/api/workouts/range", (req, res) => {
+    const range = await Workout.aggregate([{
+        $addFields: {
+            totalDuration: { $sum: '$exercises.duration' },
+        }
+    }]).limit(7);
+    console.log(range);
+    res.json(range);
+})
 
-    app.put("/api/workouts/:id", (req, res) => {
-        console.log(req.body)
-        Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body } }, { new: true, runValidators: true })
-            .then(() => res.sendStatus(200))
-    });
-}
+router.put("/api/workouts/:id", (req, res) => {
+    await Workout.findOneAndUpdate(
+        { _id: req.params.id },
+        { $push: { exercises: req.body } },
+        { new: true }
+    ).then(workout => res.json(workout));
+});
+
+module.exports = router;

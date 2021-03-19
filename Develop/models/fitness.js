@@ -45,7 +45,7 @@ WorkoutSchema.virtual("totalDuration").get(function () {
 });
 
 // A variable that defines Fitness to the created fitnessSchema model
-const workout = mongoose.model("Workout", WorkSchema);
+const Workout = mongoose.model("Workout", WorkSchema);
 
 // Exports the Fitness schema/constructor 
 module.exports = Workout;
